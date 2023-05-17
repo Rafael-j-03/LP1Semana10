@@ -49,8 +49,6 @@ namespace PlayerManager4
             // Main program loop
             do
             {
-                // Sort the player list
-                playerList.Sort();
                 // Show menu and get user option
                 ShowMenu();
                 option = Console.ReadLine();
@@ -63,9 +61,11 @@ namespace PlayerManager4
                         InsertPlayer();
                         break;
                     case "2":
+                        SortPlayersQuestion();
                         ListPlayers(playerList);
                         break;
                     case "3":
+                        SortPlayersQuestion();
                         ListPlayersWithScoreGreaterThan();
                         break;
                     case "4":
@@ -184,6 +184,64 @@ namespace PlayerManager4
                 {
                     // ...return him as a member of the player enumerable
                     yield return p;
+                }
+            }
+        }
+
+        // Ask the user 
+        private void SortPlayersQuestion()
+        {
+            while (true)
+            {
+                // Ask the user if he wants to sort by score
+                Console.Write("Sort by score? (y/n) ");
+                
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    playerList.Sort();
+                    break;
+                }
+                else if (Console.ReadLine().ToLower() == "n")
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Console.WriteLine("\n>>> Unknown option! <<<\n");
+                }
+
+                // Ask the user if he wants to sort by name ascending
+                Console.Write("Sort by name in ascending order? (y/n) ");
+
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    playerList.Sort(new CompareByName(true));
+                    break;
+                }
+                else if (Console.ReadLine().ToLower() == "n")
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Console.WriteLine("\n>>> Unknown option! <<<\n");
+                }
+
+                // Ask the user if he wants to sort by name descending
+                Console.Write("Sort by name in descending order? (y/n) ");
+
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    playerList.Sort(new CompareByName(false));
+                    break;
+                }
+                else if (Console.ReadLine().ToLower() == "n")
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Console.WriteLine("\n>>> Unknown option! <<<\n");
                 }
             }
         }
