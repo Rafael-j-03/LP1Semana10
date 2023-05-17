@@ -36,6 +36,31 @@ namespace StringCollections
             hashSet.Add("Durian");
             hashSet.Add("Cherry");
             hashSet.Add("Cherry"); // Adding duplicate element
+
+            // Print the elements in each collection
+            Console.WriteLine("List elements:");
+            foreach (string element in list)
+            {
+                Console.WriteLine(element);
+            }
+
+            Console.WriteLine("\nStack elements:");
+            foreach (string element in stack)
+            {
+                Console.WriteLine(element);
+            }
+
+            Console.WriteLine("\nQueue elements:");
+            foreach (string element in queue)
+            {
+                Console.WriteLine(element);
+            }
+
+            Console.WriteLine("\nHashSet elements:");
+            foreach (string element in hashSet)
+            {
+                Console.WriteLine(element);
+            }
         }
     }
 }
