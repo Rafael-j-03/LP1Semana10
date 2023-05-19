@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace LootSort
 {
     /// <summary>
@@ -41,6 +44,17 @@ namespace LootSort
         public override int GetHashCode()
         {
             return HashCode.Combine(Kind, Description, Value);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Loot otherLoot = (Loot)obj;
+            return Kind == otherLoot.Kind &&
+                   Description == otherLoot.Description &&
+                   Value == otherLoot.Value;
         }
     }
 }
