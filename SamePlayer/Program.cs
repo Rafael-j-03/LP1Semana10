@@ -9,9 +9,9 @@ namespace SamePlayer
         {
             HashSet<Player> setOfPlayers = new HashSet<Player>();
 
-            Player player1 = new Player { Type = PlayerType.Tank, Name = "Ana" };
-            Player player2 = new Player { Type = PlayerType.Slayer, Name = "Paulo" };
-            Player player3 = new Player { Type = PlayerType.Tank, Name = "Ana" };
+            Player player1 = new Player(PlayerType.Tank, "Ana");
+            Player player2 = new Player(PlayerType.Slayer, "Paulo");
+            Player player3 = new Player(PlayerType.Tank, "Ana");
 
             setOfPlayers.Add(player1);
             setOfPlayers.Add(player2);
