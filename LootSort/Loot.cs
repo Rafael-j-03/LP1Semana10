@@ -56,5 +56,23 @@ namespace LootSort
                    Description == otherLoot.Description &&
                    Value == otherLoot.Value;
         }
+
+        public int CompareTo(Loot other)
+        {
+            // Sort by loot type (alphabetical order)
+            int kindComparison = string.Compare(Kind.ToString(), 
+                                 other.Kind.ToString(), 
+                                 StringComparison.Ordinal);
+            if (kindComparison != 0)
+                return kindComparison;
+
+            // If loot types are the same, sort by loot value
+            int valueComparison = Value.CompareTo(other.Value);
+            if (valueComparison != 0)
+                return -valueComparison; // Reverse order
+
+            // If loot types and their values are equal, sort by loot description
+            return string.Compare(Description, other.Description, StringComparison.Ordinal);
+        }
     }
 }
